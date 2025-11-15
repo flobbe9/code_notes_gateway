@@ -7,11 +7,10 @@ export const LOG_LEVEL = process.env["APP_LOG_LEVEL"] as LogLevel;
 export const HTTPS = process.env["HTTPS"] === "true";
 
 export const PORT = Number(process.env["PORT"]);
-const PROTOCOL = process.env["PROTOCOL"];
-export const BACKEND_BASE_URL = `${PROTOCOL}://${process.env["BACKEND_HOST"]}:${process.env["BACKEND_PORT"]}`;
+export const BACKEND_BASE_URL = `http://${process.env["BACKEND_HOST"]}:${process.env["BACKEND_PORT"]}`;
 export const BACKEND_MAPPING = process.env["BACKEND_MAPPING"];
 
-export const FROTNEND_BASE_URL = `${PROTOCOL}://${process.env["FRONTEND_HOST"]}:${process.env["FRONTEND_PORT"]}`;
+export const FROTNEND_BASE_URL = `http://${process.env["FRONTEND_HOST"]}:${process.env["FRONTEND_PORT"]}`;
 export const FROTNEND_MAPPING = process.env["FRONTEND_MAPPING"];
 
 export const SSL_CRT_FILE = process.env["SSL_CRT_FILE"] as string;

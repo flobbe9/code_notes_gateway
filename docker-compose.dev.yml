@@ -10,5 +10,5 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./.ssl/localhost.crt.pem:/app/volumes/ssl/localhost.crt.pem
-      - ./.ssl/localhost.key.pem:/app/volumes/ssl/localhost.key.pem
+      - ./.ssl/localhost.crt.pem:/app/.ssl/fullchain.pem
+      - ./.ssl/localhost.key.pem:/app/.ssl/privkey.pem

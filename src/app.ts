@@ -6,27 +6,26 @@ import { logDebug } from './helpers/logUtils.ts';
 
 const app = express();
 
-// TODO: continue here
-    // make git repo
-    // ssl
 app.use(`/${BACKEND_MAPPING}`, proxy(BACKEND_BASE_URL, {
-    filter: (req, res) => {
+    filter: (req) => {
         logDebug(`/${BACKEND_MAPPING} => ${BACKEND_BASE_URL}${req.url}`)
         return true;
-    },
-    https: false
+    }
 }));
 
 app.use(`/${FROTNEND_MAPPING}`, proxy(FROTNEND_BASE_URL, {
-    filter: (req, res) => {
+    filter: (req) => {
         logDebug(`/${FROTNEND_MAPPING} => ${FROTNEND_BASE_URL}${req.url}`)
-        // TODO: what does false do?
         return true;
-    },
-    https: false
+    }
 }));
 
-// TODO
-// app.use('*', proxy(FROTNEND_BASE_URL));
+// 404 to frontend as well
+app.use(proxy(FROTNEND_BASE_URL, {
+    filter: (req) => {
+        logDebug(`/${FROTNEND_MAPPING} => ${FROTNEND_BASE_URL}${req.url}`)
+        return true;
+    }
+}));
 
 export default app;
