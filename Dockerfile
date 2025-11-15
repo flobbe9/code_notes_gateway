@@ -16,4 +16,4 @@ COPY ./package.json \
 ENV CI=true
 RUN npm ci
 
-ENTRYPOINT ["node", "--env-file=.env", "--env-file=.env.local", "src/server.ts"]
+ENTRYPOINT npm run prod
