@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-      - run: npm ci
+      - run: npm ci --include=dev
       - run: npx tsc -b
       - name: Test server startup
       # TODO: continue here
