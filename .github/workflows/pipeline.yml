@@ -23,6 +23,8 @@ jobs:
           npm run prod &
           sleep 5
           kill $!
+        env:
+          HTTPS: false
 
   # prod
   push_to_Dockerhub:
