@@ -21,16 +21,16 @@ jobs:
       - run: npm ci
       - run: npx tsc -b
       - run: |
-          npm run prod & SERVER_PID=$!
+          npm run prod &
           sleep 5
-          echo $SERVER_PID
-          ps -p $SERVER_PID
-          if ! ps -p $SERVER_PID > /dev/null; then
+          NODE_PID=$(pgrep -f "node src/server.ts")
+          echo $NODE_PID
+          if ! ps -p $NODE_PID > /dev/null; then
             echo "Express failed on startup."
             exit 1
           fi
           echo "Express started successfully. Killing process."
-          kill $SERVER_PID
+          kill $NODE_PID
           exit 0
         env:
           HTTPS: false
