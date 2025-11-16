@@ -11,7 +11,7 @@ if (HTTPS) {
         key: fs.readFileSync(SSL_KEY_FILE)
     }
     https.createServer(cts, app).listen(PORT, handleAppStart);
-
+    
 } else {
     app.listen(PORT, handleAppStart);
 }

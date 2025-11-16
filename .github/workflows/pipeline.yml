@@ -22,8 +22,6 @@ jobs:
       - run: npx tsc -b
       - run: |
           npm run prod &
-          sleep 5
-          exit 0
         env:
           HTTPS: false
 
