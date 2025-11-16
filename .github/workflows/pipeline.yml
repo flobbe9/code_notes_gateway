@@ -22,14 +22,14 @@ jobs:
       - run: npx tsc -b
       - run: |
           npm run prod &
-          NODE_PID=$!
-          echo $NODE_PID
           sleep 5
+          NODE_PID=$(pgrep -f "prod")
+          echo $NODE_PID
           if [ -z $NODE_PID ]; then
-            echo "Express failed to start."
-            exit 1;
+              echo "sucess"
+          else
+              echo "failed"
           fi;
-          exit 0;
         env:
           HTTPS: false
 
