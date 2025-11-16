@@ -4,6 +4,7 @@
   "description": "",
   "license": "MIT",
   "author": "f.schikarski",
+  "node": "24",
   "type": "module",
   "main": "server.ts",
   "scripts": {
