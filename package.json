@@ -1,0 +1,27 @@
+{
+  "name": "code_notes_gateway",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "author": "f.schikarski",
+  "node": "24",
+  "type": "module",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "node --env-file=.env --env-file=.env.local --watch-path src src/server.ts",
+    "prod": "node --env-file=.env --env-file-if-exists=.env.local src/server.ts"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-http-proxy": "^2.1.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.5",
+    "@types/express-http-proxy": "^1.6.7",
+    "@types/node": "^24.10.0",
+    "browserify": "^17.0.1",
+    "nodemon": "^3.1.10",
+    "typescript": "^5.9.3",
+    "ts-node": "^10.9.2"
+  }
+}

@@ -1,0 +1,15 @@
+services:
+  gateway:
+    image: dev_code_notes_gateway
+    build:
+      context: .
+      args:
+        NODE_IMAGE_TAG: ${NODE_IMAGE_TAG}
+        APP_ENV: development
+    environment:
+      TZ: ${TZ}
+    ports:
+      - 3000:3000
+    volumes:
+      - ./.ssl/localhost.crt.pem:/app/.ssl/fullchain.pem
+      - ./.ssl/localhost.key.pem:/app/.ssl/privkey.pem
