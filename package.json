@@ -7,8 +7,8 @@
   "type": "module",
   "main": "server.ts",
   "scripts": {
-    "dev": "node -r ts-node/register --env-file=.env --env-file=.env.local --watch-path src src/server.ts",
-    "prod": "node -r ts-node/register --env-file=.env --env-file-if-exists=.env.local src/server.ts"
+    "dev": "node -r ts-node/esm --env-file=.env --env-file=.env.local --watch-path src src/server.ts",
+    "prod": "node -r ts-node/esm --env-file=.env --env-file-if-exists=.env.local src/server.ts"
   },
   "dependencies": {
     "express": "^5.1.0",
