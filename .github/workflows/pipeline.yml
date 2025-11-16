@@ -95,7 +95,7 @@ jobs:
           script: |
             chmod 777 ./${{ vars.SSH_TARGET_FOLDER }}/writeToEnvFile.sh 
             ./${{ vars.SSH_TARGET_FOLDER }}/writeToEnvFile.sh \
-              GATEWAY_PORT='${{ env.GATEWAY_PORT }}'
+              GATEWAY_PORT='${{ env.PORT }}'
 
             docker compose -f './${{ vars.SSH_TARGET_FOLDER }}/docker-compose.yml' pull gateway
             yes | docker rm $(docker container ls --all --filter=ancestor=$(docker images -f "dangling=true" -q) --format "{{.ID}}") --force
