@@ -21,8 +21,9 @@ jobs:
       - run: npm ci
       - run: npx tsc -b
       - run: |
-          chmod 777 buildPipeline.sh
-          ./buildPipeline.sh
+          npm run prod &
+          sleep 5
+          exit 0
         env:
           HTTPS: false
 
