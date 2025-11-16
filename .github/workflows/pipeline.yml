@@ -24,7 +24,7 @@ jobs:
           npm run prod &
           sleep 5
           NODE_PID=$(pgrep -f "server.ts")
-          if ! ps -p $NODE_PID > /dev/null; then
+          if [ -z "$NODE_PID" ]; then
             echo "Express failed on startup."
             exit 1
           fi
