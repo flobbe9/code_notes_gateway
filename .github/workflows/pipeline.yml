@@ -25,10 +25,10 @@ jobs:
           npm run prod & SERVER_PID=$!
           sleep 5
           if ! ps -p $SERVER_PID > /dev/null; then
-            echo "Server process failed to start."
+            echo "Express failed on startup."
             exit 1
           fi
-          echo "Server started successfully. Killing process."
+          echo "Express started successfully. Killing process."
           kill $SERVER_PID
           exit 0
         env:

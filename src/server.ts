@@ -23,5 +23,4 @@ function handleAppStart(): void {
     logDebug(`Https: ${HTTPS}`)
     logDebug(`Frontend: ${FROTNEND_BASE_URL}`)
     logDebug(`Backend: ${BACKEND_BASE_URL}`)
-    throw new Error("fail pipeline")
 }
