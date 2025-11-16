@@ -20,10 +20,6 @@ jobs:
           node-version: "24"
       - run: npm ci
       - run: npx tsc -b
-      - run: |
-          npm run prod &
-        env:
-          HTTPS: false
 
   # prod
   push_to_Dockerhub:
@@ -101,8 +97,8 @@ jobs:
             ./${{ vars.SSH_TARGET_FOLDER }}/writeToEnvFile.sh \
               GATEWAY_PORT='${{env.GATEWAY_PORT}}'
 
-            docker compose -f './${{ vars.SSH_TARGET_FOLDER }}/docker-compose.yml' pull backend
+            docker compose -f './${{ vars.SSH_TARGET_FOLDER }}/docker-compose.yml' pull gateway
             yes | docker rm $(docker container ls --all --filter=ancestor=$(docker images -f "dangling=true" -q) --format "{{.ID}}") --force
             yes | docker image rm $(docker images -f "dangling=true" -q)
-            docker compose -f './${{ vars.SSH_TARGET_FOLDER }}/docker-compose.yml' up backend -d
+            docker compose -f './${{ vars.SSH_TARGET_FOLDER }}/docker-compose.yml' up gateway -d
             yes | docker volume prune
