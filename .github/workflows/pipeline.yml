@@ -20,10 +20,10 @@ jobs:
           node-version: "24"
       - run: npm ci
       - run: npx tsc -b
-      - name: Test server startup
-        run: |
+      - run: |
           npm run prod & SERVER_PID=$!
           sleep 5
+          echo $SERVER_PID
           if ! ps -p $SERVER_PID > /dev/null; then
             echo "Express failed on startup."
             exit 1
