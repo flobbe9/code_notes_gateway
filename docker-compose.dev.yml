@@ -5,6 +5,7 @@ services:
       context: .
       args:
         NODE_IMAGE_TAG: ${NODE_IMAGE_TAG}
+        APP_ENV: development
     environment:
       TZ: ${TZ}
     ports:

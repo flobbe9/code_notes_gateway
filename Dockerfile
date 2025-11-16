@@ -4,6 +4,8 @@ FROM node:${NODE_IMAGE_TAG} AS build
 
 WORKDIR /app
 
+ARG APP_ENV=production
+
 COPY ./src ./src
 COPY ./package.json \
      ./package-lock.json \
@@ -13,6 +15,7 @@ COPY ./package.json \
      ./
 
 # fail on warnings
+ENV NODE_ENV=${APP_ENV}
 ENV CI=true
 RUN npm ci
 
