@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v5
       - run: npm ci
       - run: npx tsc -b
+      - run: echo node --version
+      - run: echo npm --version
       - name: Test server startup
       # TODO: continue here
         run: |
