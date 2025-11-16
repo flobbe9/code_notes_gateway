@@ -22,8 +22,8 @@ jobs:
       - run: npx tsc -b
       - run: |
           npm run prod &
-          NODE_PID=$!
-          sleep 10
+          sleep 5
+          NODE_PID=$(pgrep -f "server.ts")
           if ! ps -p $NODE_PID > /dev/null; then
             echo "Express failed on startup."
             exit 1
