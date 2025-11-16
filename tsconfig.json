@@ -3,10 +3,10 @@
   "compilerOptions": {
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "EsNext",
+    "module": "es2022",
     // "target": "es2024",
     // For nodejs:
-    "lib": ["es2024"],
+    "lib": ["es2022"],
     // "types": ["node"],
     // and npm install -D @types/node
 
@@ -36,6 +36,6 @@
     "skipLibCheck": true
   },
   "ts-node": {
-      "esm": true
+    "esm": true
   },
 }

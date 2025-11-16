@@ -1,5 +1,4 @@
 import express from 'express';
-
 import proxy from 'express-http-proxy';
 import { BACKEND_BASE_URL, BACKEND_MAPPING, FROTNEND_BASE_URL, FROTNEND_MAPPING } from './helpers/constants.ts';
 import { logDebug } from './helpers/logUtils.ts';
