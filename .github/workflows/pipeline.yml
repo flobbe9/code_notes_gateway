@@ -82,7 +82,7 @@ jobs:
 
       - name: Move .env vars to pipeline env
         run: |
-          echo $(cat .env | grep '^GATEWAY_PORT=.*$') >> $GITHUB_ENV
+          echo $(cat .env | grep '^PORT=.*$') >> $GITHUB_ENV
         shell: bash
 
       - name: Write env to server .env file, then pull, rerun and clean up
