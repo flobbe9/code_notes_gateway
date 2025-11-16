@@ -34,7 +34,7 @@ jobs:
 
       - name: move .env vars to pipeline
         run: |
-          echo $(cat .env | grep '^VERSION=.*$') >> $GITHUB_ENV
+          echo $(cat .env | grep '^APP_VERSION=.*$') >> $GITHUB_ENV
           echo $(cat .env | grep '^NODE_IMAGE_TAG=.*$') >> $GITHUB_ENV
         shell: bash
 
@@ -60,7 +60,7 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/code_notes_gateway:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/code_notes_gateway:${{ env.VERSION }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/code_notes_gateway:${{ env.APP_VERSION }}
 
   deploy_to_server:
     runs-on: ubuntu-latest
@@ -82,7 +82,7 @@ jobs:
 
       - name: Move .env vars to pipeline env
         run: |
-          echo $(cat .env | grep '^GATEWAY_PORT=.*$') >> $GITHUB_ENV
+          echo $(cat .env | grep '^PORT=.*$') >> $GITHUB_ENV
         shell: bash
 
       - name: Write env to server .env file, then pull, rerun and clean up
@@ -95,7 +95,7 @@ jobs:
           script: |
             chmod 777 ./${{ vars.SSH_TARGET_FOLDER }}/writeToEnvFile.sh 
             ./${{ vars.SSH_TARGET_FOLDER }}/writeToEnvFile.sh \
-              GATEWAY_PORT='${{ env.GATEWAY_PORT }}'
+              GATEWAY_PORT='${{ env.PORT }}'
 
             docker compose -f './${{ vars.SSH_TARGET_FOLDER }}/docker-compose.yml' pull gateway
             yes | docker rm $(docker container ls --all --filter=ancestor=$(docker images -f "dangling=true" -q) --format "{{.ID}}") --force
