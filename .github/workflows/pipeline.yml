@@ -15,10 +15,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
       - run: npm ci
       - run: npx tsc -b
-      - run: echo node --version
-      - run: echo npm --version
       - name: Test server startup
       # TODO: continue here
         run: |
