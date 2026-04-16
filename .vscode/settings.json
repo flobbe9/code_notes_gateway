@@ -1,5 +1,6 @@
 {
     "github-actions.workflows.pinned.workflows": [
         ".github/workflows/pipeline.yml"
-    ]
+    ],
+    "postman.settings.dotenv-detection-notification-visibility": false
 }

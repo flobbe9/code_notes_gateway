@@ -13,3 +13,13 @@ services:
     volumes:
       - ./.ssl/localhost.crt.pem:/app/.ssl/fullchain.pem
       - ./.ssl/localhost.key.pem:/app/.ssl/privkey.pem
+  nginx:
+    image: nginx:latest
+    ports: 
+      - 3000:3000
+    environment:
+      TZ: ${TZ}
+    volumes:
+      - ./.nginx/.nginx.conf.local:/etc/nginx/conf.d/default.conf
+      - ./.ssl/localhost.crt.pem:/etc/nginx/certs/fullchain.pem
+      - ./.ssl/localhost.key.pem:/etc/nginx/certs/privkey.pem
