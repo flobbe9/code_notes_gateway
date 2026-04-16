@@ -1,3 +1,6 @@
+# This repo is obsolete for the code_notes project and is marked for deletion
+See backend repo below.
+
 # Code Notes gateway
 Gateway service of <a href="https://code-notes.net" target="_blank">https://code-notes.net</a>.
 
